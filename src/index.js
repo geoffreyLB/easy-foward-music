@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import '@styles/index.scss';
+import App from '@components/App';
 
-const App = () => {
-  return <div>Hello React,Webpack 4 & Babel 7!</div>;
-};
-
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.querySelector('#root'),
+);
