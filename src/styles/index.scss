@@ -1,0 +1,10 @@
+// import fonts
+body, html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+// color variables
+$blue-grey-color: #C5CAE9;
+
+@import '@styles/reset.scss';
+@import '@components/Loading/Loading.scss';
