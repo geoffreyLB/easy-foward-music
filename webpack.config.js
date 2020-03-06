@@ -48,4 +48,7 @@ module.exports = {
       '@styles': path.resolve(__dirname, 'src/styles/'),
     },
   },
+  devServer: {
+    historyApiFallback: true,
+  },
 };
