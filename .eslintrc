@@ -32,9 +32,12 @@
     "no-return-assign": [1],
     "no-param-reassign": [1],
     "no-shadow": [1],
-    "camelcase": [1],
+    "camelcase": 0,
     "no-underscore-dangle": [0, "always"],
     "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-unused-vars": 0,
+    "no-console": 0
   }
 }

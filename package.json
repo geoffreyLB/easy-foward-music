@@ -31,9 +31,11 @@
   },
   "homepage": "https://github.com/geoffreyLB/easy-foward-music#readme",
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "@material-ui/core": "^4.9.5",
     "axios": "^0.19.2",
     "node-sass": "^4.13.1",
+    "query-string": "^6.11.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
@@ -41,6 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
     "babel-eslint": "^10.1.0",
