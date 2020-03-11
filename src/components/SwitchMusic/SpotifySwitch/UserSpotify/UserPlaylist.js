@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
 
-const SPOTIFY_PROFIL = 'https://api.spotify.com/v1/me';
-
-const User = ({ location }) => {
+const UserPlaylist = ({ location }) => {
   // Token values
   const [accesToken, setAccessToken] = useState('');
   const [tokenType, setTokenType] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
-  const [spotifyProfilData, setSpotifyProfilData] = useState({});
+  const [spotifyPlaylistData, setSpotifyPlaylistData] = useState({});
 
   // Hash Token
   const { hash } = location;
   const hashValues = queryString.parse(hash);
   const { access_token, expires_in, token_type } = hashValues;
 
-  const { country, display_name, product, followers, external_urls, images } = spotifyProfilData;
+  const { items } = spotifyPlaylistData;
 
   // Token headers for the get request
   const config = {
@@ -33,33 +32,34 @@ const User = ({ location }) => {
     async function fetchData() {
       if (accesToken) {
         try {
-          const result = await axios.get(SPOTIFY_PROFIL, config);
-          setSpotifyProfilData(result.data);
+          const result = await axios.get(SPOTIFY_PROFIL_PLAYLISTS, config);
+          setSpotifyPlaylistData(result.data);
         } catch (err) {
           console.error('Error to fetch Spotify profile data');
         }
       }
     }
     fetchData();
-  }, [accesToken, SPOTIFY_PROFIL]);
+  }, [accesToken, SPOTIFY_PROFIL_PLAYLISTS]);
+
+  console.log(items);
 
   return (
     <div>
-      User Profil
-      {Object.keys(spotifyProfilData).length > 0 && (
+      User UserPlaylist
+      {Object.keys(spotifyPlaylistData).length > 0 && (
         <div>
-          {images.map(image => (
-            <img key={image} src={image.url} alt={display_name} />
+          {items.map(item => (
+            <Link key={item.name} to={`/playlist/${item.id}`}>
+              <div key={item.name}>
+                <span>{item.name}</span>
+              </div>
+            </Link>
           ))}
-          <span>Pays : {country}</span>
-          <span>Nom/Prénom : {display_name}</span>
-          <span>Type de profil : {product}</span>
-          <span>Nombre de followers : {followers.total}</span>
-          <span>Lien vers profil Spotify : {external_urls.spotify}</span>
         </div>
       )}
     </div>
   );
 };
 
-export default User;
+export default UserPlaylist;
