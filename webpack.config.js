@@ -48,6 +48,7 @@ module.exports = {
       SPOTIFY_CLIENT_ID: JSON.stringify('1117bee600a94c6a9b18548dac3c96e1'),
       REDIRECT_URI: JSON.stringify('http://localhost:8080/userSpotify'),
       SPOTIFY_SCOPES: JSON.stringify(['user-read-private', 'user-read-email']),
+      URL_SPOTIFY_PROFIL_USER: JSON.stringify('/userSpotify'),
     }),
   ],
   resolve: {
