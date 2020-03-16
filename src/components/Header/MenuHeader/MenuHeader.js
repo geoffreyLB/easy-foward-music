@@ -17,7 +17,7 @@ const MenuHeader = () => {
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Menu
+        <p className="menu-header">Menu</p>
       </Button>
       <Menu
         id="simple-menu"
@@ -27,8 +27,8 @@ const MenuHeader = () => {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose}>My Switch</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>My Spotify</MenuItem>
+        <MenuItem onClick={handleClose}>My Deezer</MenuItem>
       </Menu>
     </div>
   );
