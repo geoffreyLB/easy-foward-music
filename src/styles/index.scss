@@ -14,9 +14,16 @@
   src: url('~@fonts/futura_medium.ttf');
 }
 
+// Remove a behavior
+a:visited, a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
 // color variables
 $white-color: #ffffff;
 $background-grey-color: #202020;
+$background-color-site: #2f3035;
 $header-color: #212121;
 
 @import '@styles/reset.scss';
@@ -24,3 +31,4 @@ $header-color: #212121;
 @import '@components/Home/Home.scss';
 @import '@components/Header/Header.scss';
 @import '@components/Header/MenuHeader/MenuHeader.scss';
+@import '@components/NotFound/NotFound.scss';

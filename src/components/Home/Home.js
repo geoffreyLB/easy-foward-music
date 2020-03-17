@@ -13,8 +13,6 @@ const Home = () => {
       <Grid
         container
         className="home__description-container"
-        spacing={0}
-        direction="column"
         alignItems="center"
         justify="center"
       >
@@ -33,8 +31,6 @@ const Home = () => {
         <Grid
           container
           className="home__button-container"
-          spacing={0}
-          direction="column"
           alignItems="center"
           justify="center"
         >
