@@ -1,17 +1,17 @@
 // Import fonts
 @font-face {
   font-family: 'Futura_Book';
-  src: url('../fonts//futura_book.ttf');
+  src: url('~@fonts/futura_book.ttf');
 }
 
 @font-face {
   font-family: 'Futura_Light';
-  src: url('../fonts/futura_light.ttf');
+  src: url('~@fonts/futura_light.ttf');
 }
 
 @font-face {
-  font-family: "Futura_Medium";
-  src: url("../fonts/futura_medium.ttf");
+  font-family: 'Futura_Medium';
+  src: url('~@fonts/futura_medium.ttf');
 }
 
 // color variables
