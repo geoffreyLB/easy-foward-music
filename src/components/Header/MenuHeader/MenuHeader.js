@@ -27,7 +27,7 @@ const MenuHeader = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>My Switch</MenuItem>
+        <MenuItem onClick={handleClose}><Link to="/switch-music">My Switch</Link></MenuItem>
         <MenuItem onClick={handleClose}>My Spotify</MenuItem>
         <MenuItem onClick={handleClose}>My Deezer</MenuItem>
       </Menu>

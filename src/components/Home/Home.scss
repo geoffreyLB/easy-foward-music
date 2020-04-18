@@ -1,18 +1,20 @@
 .home {
-  width: 100%;
-  min-height: 100vh;
-  font-family: 'Futura_Book';
-  background-color: $background-color-site;
+  @include background-style;
 
   &__description-container {
-    margin-top: 70px;
+    @include align-middle-screen-block;
 
     &__preview {
-      font-family: 'Futura_Medium';
-      font-size: 25px;
-      color: $white-color;
-      width: 650px;
-      line-height: 28px;
+      width: 100%;
+
+      &__text {
+        margin: 0 auto;
+        font-family: 'Futura_Medium';
+        font-size: 25px;
+        color: $white-color;
+        width: 650px;
+        line-height: 28px;
+      }
     }
 
     &__text {

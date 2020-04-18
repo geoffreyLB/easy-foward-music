@@ -10,35 +10,27 @@ const Home = () => {
   return (
     <div className="home">
       <Header />
-      <Grid
-        container
-        className="home__description-container"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid item className="home__description-container">
-          <h2 className="home__description-container__preview">
-            The Application to Switch Playlist between Spotfy and Deezer
-          </h2>
+      <div className="home__description-container">
+        <Grid container alignItems="center" justify="center">
+          <Grid className="home__description-container__preview">
+            <h2 className="home__description-container__preview__text">
+              The Application to Switch Playlist between Spotfy and Deezer
+            </h2>
+          </Grid>
+          <Grid>
+            <h2 className="home__description-container__text">
+              Tired of opening both apps to configure playlist conversion ? Easy Switch is here for
+              you ! Switch easily your favorite songs and playlists from Deezer to Spotify, and vice
+              versa. In few clicks !
+            </h2>
+          </Grid>
+          <Grid container className="home__button-container" alignItems="center" justify="center">
+            <Button className="home__button-container__button">
+              <Link to="/switch-music">Jump In !</Link>
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <h2 className="home__description-container__text">
-            Tired of opening both apps to configure playlist conversion ? Easy Switch is here for
-            you ! Switch easily your favorite songs and playlists from Deezer to Spotify, and vice
-            versa. In few clicks !
-          </h2>
-        </Grid>
-        <Grid
-          container
-          className="home__button-container"
-          alignItems="center"
-          justify="center"
-        >
-          <Button className="home__button-container__button">
-            <Link to="/switch-music">Jump In !</Link>
-          </Button>
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 };

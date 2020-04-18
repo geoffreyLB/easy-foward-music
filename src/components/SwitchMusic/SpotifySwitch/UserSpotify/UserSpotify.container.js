@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 
-const UserContainer = WrappedComponent => ({ location }) => {
+const UserSpotifyContainer = WrappedComponent => ({ location }) => {
   // Token values
   const [accesToken, setAccessToken] = useState('');
   const [tokenType, setTokenType] = useState('');
@@ -74,4 +74,4 @@ const UserContainer = WrappedComponent => ({ location }) => {
   );
 };
 
-export default UserContainer;
+export default UserSpotifyContainer;

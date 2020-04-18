@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 const SPOTIFY_ACCOUNT_AUTHORIZE = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${encodeURIComponent(
   REDIRECT_URI,
@@ -19,13 +20,15 @@ const SpotifySwitch = () => {
 
   return (
     <div>
-      <button
+      <Button
+        variant="contained"
+        color="primary"
         aria-label="Spotify button submit"
         type="submit"
         onClick={() => setRedirection(!redirection)}
       >
-        Submit your Spotify Account
-      </button>
+        Connect with Spotify
+      </Button>
     </div>
   );
 };
