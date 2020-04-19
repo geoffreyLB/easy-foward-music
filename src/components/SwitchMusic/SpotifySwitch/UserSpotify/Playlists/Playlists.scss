@@ -16,6 +16,10 @@
       &:last-of-type {
         border: none;
       }
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
@@ -27,5 +28,14 @@ const Playlists = ({ spotifyPlaylistData }) => {
     </div>
   );
 };
+
+Playlists.propTypes = {
+  spotifyPlaylistData: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }))
+  }).isRequired,
+}
 
 export default UserSpotifyContainer(Playlists);

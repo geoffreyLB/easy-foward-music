@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import axios from 'axios';
 
@@ -6,7 +7,7 @@ import Header from '@components/Header/Header';
 import Profile from '@components/SwitchMusic/SpotifySwitch/UserSpotify/Profile/Profile';
 import Playlists from '@components/SwitchMusic/SpotifySwitch/UserSpotify/Playlists/Playlists';
 
-const User = ({ location }) => {
+const UserSpotify = ({ location }) => {
   return (
     <div className="user-spotify">
       <Header />
@@ -16,4 +17,8 @@ const User = ({ location }) => {
   );
 };
 
-export default User;
+UserSpotify.propTypes = {
+  location: PropTypes.shape({}).isRequired,
+};
+
+export default UserSpotify;

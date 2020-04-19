@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import axios from 'axios';
 
@@ -72,6 +73,17 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
       />
     </div>
   );
+};
+
+UserSpotifyContainer.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string.isRequired,
+  }).isRequired,
+  hashValues: PropTypes.shape({
+    access_token: PropTypes.string.isRequired,
+    expires_in: PropTypes.string.isRequired,
+    token_type: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default UserSpotifyContainer;
