@@ -1,0 +1,17 @@
+.header {
+  background-color: $header-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  &__logo {
+    font-family: 'Futura_Book';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white-color;
+    margin: 10px 0px 0px 10px;
+
+      &:visited, &:focus {
+        text-decoration: none;
+        outline: none;
+      }
+  }
+}

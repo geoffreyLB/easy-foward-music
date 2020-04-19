@@ -1,10 +1,63 @@
-// import fonts
-body, html {
-  font-family: Arial, Helvetica, sans-serif;
+// color variables
+$white-color: #ffffff;
+$background-grey-color: #202020;
+$background-color-site: #2f3035;
+$grey-color: #696969;
+$header-color: #212121;
+
+@mixin background-style {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Futura_Book';
+  background-color: $background-color-site;
 }
 
-// color variables
-$blue-grey-color: #C5CAE9;
+@mixin align-middle-screen-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+}
+
+@mixin remove-a-properties {
+  a, a:visited, a:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+// Import fonts
+@font-face {
+  font-family: 'Futura_Book';
+  src: url('~@fonts/futura_book.ttf');
+}
+
+@font-face {
+  font-family: 'Futura_Light';
+  src: url('~@fonts/futura_light.ttf');
+}
+
+@font-face {
+  font-family: 'Futura_Medium';
+  src: url('~@fonts/futura_medium.ttf');
+}
+
+// Remove a behavior
+a, a:visited, a:focus {
+  text-decoration: none;
+  outline: none;
+}
 
 @import '@styles/reset.scss';
 @import '@components/Loading/Loading.scss';
+@import '@components/Home/Home.scss';
+@import '@components/Header/Header.scss';
+@import '@components/Header/MenuHeader/MenuHeader.scss';
+@import '@components/NotFound/NotFound.scss';
+@import '@components/SwitchMusic/SwitchMusic.scss';
+@import '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.scss';
+@import '@components/SwitchMusic/SpotifySwitch/UserSpotify/Playlists/Playlists.scss';
+@import '@components/SwitchMusic/SpotifySwitch/UserSpotify/Profile/Profile.scss';
+

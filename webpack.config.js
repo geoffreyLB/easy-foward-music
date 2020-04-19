@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
@@ -34,6 +35,18 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -41,11 +54,26 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html',
     }),
+    new webpack.DefinePlugin({
+      SPOTIFY_PROFIL: JSON.stringify('https://api.spotify.com/v1/me'),
+      SPOTIFY_PROFIL_PLAYLISTS: JSON.stringify('https://api.spotify.com/v1/me/playlists'),
+      SPOTIFY_CLIENT_ID: JSON.stringify('1117bee600a94c6a9b18548dac3c96e1'),
+      REDIRECT_URI: JSON.stringify('http://localhost:8080/userSpotify'),
+      SPOTIFY_SCOPES: JSON.stringify(['user-read-private', 'user-read-email']),
+      URL_SPOTIFY_PROFIL_USER: JSON.stringify('/userSpotify'),
+    }),
   ],
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@styles': path.resolve(__dirname, 'src/styles/'),
+      '@fonts': path.resolve(__dirname, 'src/fonts/'),
     },
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
+  output: {
+    publicPath: '/',
   },
 };

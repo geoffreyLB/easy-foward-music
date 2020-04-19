@@ -14,7 +14,7 @@ const Loading = () => {
   return (
     <div className='loading'>
       {!animation ? (
-        <CircularProgress className='loading__circular-progress' />
+        <CircularProgress className='loading__circular-progress' color="secondary" />
       ) : (
         <Redirect to='/home' />
       )}

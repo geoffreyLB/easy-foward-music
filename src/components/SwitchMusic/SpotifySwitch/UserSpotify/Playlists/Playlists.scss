@@ -1,0 +1,25 @@
+.user-spotify__playlists-container {
+  margin: 20px auto 0;
+  width: 80%;
+  border: 1px solid $grey-color;
+  border-radius: 5px;
+  background: $background-color-site;
+
+  &__playlists {
+    &__one-playlist {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid $grey-color;
+      font-size: 14px;
+      color: $white-color;
+
+      &:last-of-type {
+        border: none;
+      }
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

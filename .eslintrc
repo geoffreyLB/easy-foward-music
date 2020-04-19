@@ -12,9 +12,9 @@
   },
   "rules": {
     "space-in-parens": [0, "always"],
-    "template-curly-spacing": [2, "always"],
+    // "template-curly-spacing": [2, "always"],
     "object-curly-spacing": [2, "always"],
-    "computed-property-spacing": [2, "always"],
+    // "computed-property-spacing": [2, "always"],
     "no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
     "quotes": [1, "single", "avoid-escape"],
     "no-use-before-define": [2, { "functions": false }],
@@ -32,9 +32,12 @@
     "no-return-assign": [1],
     "no-param-reassign": [1],
     "no-shadow": [1],
-    "camelcase": [1],
+    "camelcase": 0,
     "no-underscore-dangle": [0, "always"],
     "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-unused-vars": 0,
+    "no-console": 0
   }
 }

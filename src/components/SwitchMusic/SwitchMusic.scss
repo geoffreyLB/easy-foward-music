@@ -1,0 +1,24 @@
+.switch-music {
+  position: relative;
+  @include background-style;
+
+  &__description-container {
+    @include align-middle-screen-block;
+
+    &__preview {
+      width: 650px;
+      font-family: 'Futura_Medium';
+      font-size: 25px;
+      line-height: 28px;
+      text-align: center;
+      color: $white-color;
+    }
+  }
+
+  &__connect-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 100px auto 0;
+  }
+}

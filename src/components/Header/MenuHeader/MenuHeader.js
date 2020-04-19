@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -17,7 +18,7 @@ const MenuHeader = () => {
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Menu
+        <p className="menu-header">Menu</p>
       </Button>
       <Menu
         id="simple-menu"
@@ -26,9 +27,9 @@ const MenuHeader = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>My Switch</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}><Link to="/switch-music">My Switch</Link></MenuItem>
+        <MenuItem onClick={handleClose}>My Spotify</MenuItem>
+        <MenuItem onClick={handleClose}>My Deezer</MenuItem>
       </Menu>
     </div>
   );

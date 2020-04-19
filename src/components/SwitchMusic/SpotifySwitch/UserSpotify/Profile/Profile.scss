@@ -1,0 +1,33 @@
+.user-spotify__profile-container {
+  margin-top: 80px;
+
+  &__infos {
+    color: $white-color;
+    text-align: center;
+
+    &__picture {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+    }
+
+    div {
+      margin-top: 20px;
+
+      .user-spotify__profile-container__infos__name {
+        font-size: 24px;
+      }
+    }
+
+    .user-spotify__profile-container__infos__to-spotify {
+      a {
+        color: $white-color;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

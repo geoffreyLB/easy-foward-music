@@ -1,0 +1,50 @@
+.home {
+  @include background-style;
+
+  &__description-container {
+    @include align-middle-screen-block;
+
+    &__preview {
+      width: 100%;
+
+      &__text {
+        margin: 0 auto;
+        font-family: 'Futura_Medium';
+        font-size: 25px;
+        color: $white-color;
+        width: 650px;
+        line-height: 28px;
+      }
+    }
+
+    &__text {
+      font-family: 'Futura_Light';
+      font-size: 20px;
+      margin-top: 35px;
+      color: $white-color;
+      width: 650px;
+      line-height: 28px;
+    }
+  }
+
+  &__button-container {
+    margin-top: 65px;
+
+    &__button {
+      background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
+      border: 0px;
+      border-radius: 3px;
+      box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
+      color: $white-color;
+      height: 35px;
+      width: 150px;
+      padding: 0 30px;
+
+      a,
+      a:visited {
+        text-decoration: none;
+        color: $white-color;
+      }
+    }
+  }
+}
