@@ -38,12 +38,11 @@
       color: $white-color;
       height: 35px;
       width: 150px;
-      padding: 0 30px;
 
       a,
       a:visited {
+        width: 100%;
         text-decoration: none;
-        color: $white-color;
       }
     }
   }

@@ -25,7 +25,7 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
     setAccessToken(access_token);
     setTokenType(expires_in);
     setExpiresIn(token_type);
-  }, []);
+  }, [access_token, expires_in, token_type]);
 
   useEffect(() => {
     let mounted = true;

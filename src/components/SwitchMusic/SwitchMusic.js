@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import SpotifySwitch from '@components/SwitchMusic/SpotifySwitch/SpotifySwitch';
+import DeezerSwitch from '@components/SwitchMusic/DeezerSwitch/DeezerSwitch';
 import Header from '@components/Header/Header';
 import Button from '@material-ui/core/Button';
 
@@ -9,11 +10,7 @@ const SwitchMusic = () => {
     <div className="switch-music">
       <Header />
       <div className="switch-music__description-container">
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-        >
+        <Grid container alignItems="center" justify="center">
           <Grid item>
             <h2 className="switch-music__description-container__preview">
               Connect your Spotify and Deezer Account !
@@ -25,9 +22,7 @@ const SwitchMusic = () => {
             <SpotifySwitch />
           </div>
           <div className="switch-music__deezer">
-            <Button variant="contained" color="secondary">
-              Connect with Account
-            </Button>
+            <DeezerSwitch />
           </div>
         </div>
       </div>

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
-import axios from 'axios';
 
 import Header from '@components/Header/Header';
 import Profile from '@components/SwitchMusic/SpotifySwitch/UserSpotify/Profile/Profile';
