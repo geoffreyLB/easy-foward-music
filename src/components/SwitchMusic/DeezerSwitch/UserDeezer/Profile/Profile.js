@@ -1,7 +1,7 @@
 import React from 'react';
-import UserSpotifyContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container/';
+import UserDeezerContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container/';
 
-const Profile = () => {
+const Profile = ({ deezerProfilData }) => {
   return (
     <div>
       Profile
@@ -9,4 +9,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UserDeezerContainer(Profile);

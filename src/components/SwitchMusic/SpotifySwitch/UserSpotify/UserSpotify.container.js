@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const UserSpotifyContainer = WrappedComponent => ({ location }) => {
   // Token values
-  const [accesToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState('');
   const [tokenType, setTokenType] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
   const [spotifyProfilData, setSpotifyProfilData] = useState({});
@@ -23,14 +23,14 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
 
   useEffect(() => {
     setAccessToken(access_token);
-    setTokenType(expires_in);
-    setExpiresIn(token_type);
-  }, [access_token, expires_in, token_type]);
+    setTokenType(token_type);
+    setExpiresIn(expires_in);
+  }, [access_token, token_type, expires_in]);
 
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
-      if (accesToken) {
+      if (accessToken) {
         try {
           const result = await axios.get(SPOTIFY_PROFIL, configHeaders);
           if (mounted) {
@@ -44,26 +44,26 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
 
     fetchData();
     return () => (mounted = false);
-  }, [accesToken, SPOTIFY_PROFIL]);
+  }, [accessToken, SPOTIFY_PROFIL]);
 
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
-      if (accesToken) {
+      if (accessToken) {
         try {
           const result = await axios.get(SPOTIFY_PROFIL_PLAYLISTS, configHeaders);
           if (mounted) {
             setSpotifyPlaylistData(result.data);
           }
         } catch (err) {
-          console.error('Error to fetch Spotify profile data');
+          console.error('Error to fetch Spotify playlist data');
         }
       }
     }
 
     fetchData();
     return () => (mounted = false);
-  }, [accesToken, SPOTIFY_PROFIL_PLAYLISTS]);
+  }, [accessToken, SPOTIFY_PROFIL_PLAYLISTS]);
 
   return (
     <div>
