@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 
-const DEEZER_ACCOUNT_AUTHORIZE = `https://connect.deezer.com/oauth/auth.php?app_id=${DEEZER_APP_ID}&redirect_uri=${REDIRECT_URI_DEEZER}&perms=basic_access&response_type=token`;
+const DEEZER_ACCOUNT_AUTHORIZE = `https://connect.deezer.com/oauth/auth.php?app_id=${DEEZER_APP_ID}&redirect_uri=${REDIRECT_URI_DEEZER}&perms=basic_access,offline_access&response_type=token`;
 
 const DeezerSwitch = () => {
   const [redirection, setRedirection] = useState(false);

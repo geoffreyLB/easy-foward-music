@@ -15,8 +15,6 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
   const hashValues = queryString.parse(hash);
   const { access_token, expires_in } = hashValues;
 
-  console.log(access_token);
-
   // Token headers for the get request
   const configHeaders = {
     headers: {
@@ -36,9 +34,10 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
     async function fetchData() {
       if (accessToken) {
         try {
-          const result = await axios.get(DEEZER_PROFIL, configHeaders);
+          const result = await axios.get(`${DEEZER_PROFIL}?access_token=${access_token}`, configHeaders);
           if (mounted) {
-            setDeezerProfilData(result.data);
+            // setDeezerProfilData(result.data);
+            console.log(result.data);
           }
         } catch (err) {
           console.error('Error to fetch Deezer profile data');
@@ -50,24 +49,24 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
     return () => (mounted = false);
   }, [accessToken, DEEZER_PROFIL]);
 
-  useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      if (accessToken) {
-        try {
-          const result = await axios.get(DEEZER_PROFIL_PLAYLISTS, configHeaders);
-          if (mounted) {
-            setDeezerPlaylistData(result.data);
-          }
-        } catch (err) {
-          console.error('Error to fetch Deezer playlist data');
-        }
-      }
-    }
+  // useEffect(() => {
+  //   let mounted = true;
+  //   async function fetchData() {
+  //     if (accessToken) {
+  //       try {
+  //         const result = await axios.get(DEEZER_PROFIL_PLAYLISTS, configHeaders);
+  //         if (mounted) {
+  //           setDeezerPlaylistData(result.data);
+  //         }
+  //       } catch (err) {
+  //         console.error('Error to fetch Deezer playlist data');
+  //       }
+  //     }
+  //   }
 
-    fetchData();
-    return () => (mounted = false);
-  }, [accessToken, DEEZER_PROFIL_PLAYLISTS]);
+  //   fetchData();
+  //   return () => (mounted = false);
+  // }, [accessToken, DEEZER_PROFIL_PLAYLISTS]);
 
   return (
     <div>
