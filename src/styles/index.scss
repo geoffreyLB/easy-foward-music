@@ -1,15 +1,23 @@
 // color variables
 $white-color: #ffffff;
+$background-lightgrey: #D3D3D3;
 $background-grey-color: #202020;
 $background-color-site: #2f3035;
 $grey-color: #696969;
 $header-color: #212121;
 
-@mixin background-style {
+@mixin background-darkgrey-style {
   width: 100%;
   min-height: 100vh;
   font-family: 'Futura_Book';
   background-color: $background-color-site;
+}
+
+@mixin background-grey-style {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Futura_Book';
+  background-color: $background-lightgrey;
 }
 
 @mixin align-middle-screen-block {
@@ -53,11 +61,16 @@ a, a:visited, a:focus {
 @import '@styles/reset.scss';
 @import '@components/Loading/Loading.scss';
 @import '@components/Home/Home.scss';
+// Header
 @import '@components/Header/Header.scss';
 @import '@components/Header/MenuHeader/MenuHeader.scss';
 @import '@components/NotFound/NotFound.scss';
 @import '@components/SwitchMusic/SwitchMusic.scss';
+// Spotify
 @import '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.scss';
 @import '@components/SwitchMusic/SpotifySwitch/UserSpotify/Playlists/Playlists.scss';
 @import '@components/SwitchMusic/SpotifySwitch/UserSpotify/Profile/Profile.scss';
-
+// Deezer
+@import '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.scss';
+@import '@components/SwitchMusic/DeezerSwitch/UserDeezer/Playlists/Playlists.scss';
+@import '@components/SwitchMusic/DeezerSwitch/UserDeezer/Profile/Profile.scss';

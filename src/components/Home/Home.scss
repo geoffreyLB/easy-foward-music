@@ -1,5 +1,5 @@
 .home {
-  @include background-style;
+  @include background-darkgrey-style;
 
   &__description-container {
     @include align-middle-screen-block;

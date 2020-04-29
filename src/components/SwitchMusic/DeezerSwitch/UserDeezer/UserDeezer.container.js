@@ -18,7 +18,6 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
   // Token headers for the get request
   const configHeaders = {
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access_token}`,
     },
@@ -29,15 +28,18 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
     setExpiresIn(expires_in);
   }, [access_token, expires_in]);
 
+  // Get Profil data Deezer
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
       if (accessToken) {
         try {
-          const result = await axios.get(`${DEEZER_PROFIL}?access_token=${access_token}`, configHeaders);
+          const result = await axios.get(
+            `${CORS_ANYWHERE}${DEEZER_PROFIL}?access_token=${access_token}`,
+            configHeaders,
+          );
           if (mounted) {
-            // setDeezerProfilData(result.data);
-            console.log(result.data);
+            setDeezerProfilData(result.data);
           }
         } catch (err) {
           console.error('Error to fetch Deezer profile data');
@@ -49,24 +51,28 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
     return () => (mounted = false);
   }, [accessToken, DEEZER_PROFIL]);
 
-  // useEffect(() => {
-  //   let mounted = true;
-  //   async function fetchData() {
-  //     if (accessToken) {
-  //       try {
-  //         const result = await axios.get(DEEZER_PROFIL_PLAYLISTS, configHeaders);
-  //         if (mounted) {
-  //           setDeezerPlaylistData(result.data);
-  //         }
-  //       } catch (err) {
-  //         console.error('Error to fetch Deezer playlist data');
-  //       }
-  //     }
-  //   }
+  // Get Playlist data Deezer
+  useEffect(() => {
+    let mounted = true;
+    async function fetchData() {
+      if (Object.keys(deezerProfilData).length > 0) {
+        try {
+          const resultPlaylist = await axios.get(
+            `${CORS_ANYWHERE}${DEEZER_API}${deezerProfilData.id}/playlists`,
+            configHeaders,
+          );
+          if (mounted) {
+            setDeezerPlaylistData(resultPlaylist.data);
+          }
+        } catch (err) {
+          console.error('Error to fetch Deezer playlist data');
+        }
+      }
+    }
 
-  //   fetchData();
-  //   return () => (mounted = false);
-  // }, [accessToken, DEEZER_PROFIL_PLAYLISTS]);
+    fetchData();
+    return () => (mounted = false);
+  }, [deezerProfilData, DEEZER_PROFIL_PLAYLISTS]);
 
   return (
     <div>

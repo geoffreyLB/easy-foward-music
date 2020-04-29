@@ -62,11 +62,14 @@ module.exports = {
       REDIRECT_URI_SPOTIFY: JSON.stringify('http://localhost:8080/userSpotify'),
       SPOTIFY_SCOPES: JSON.stringify(['user-read-private', 'user-read-email']),
       // Deezer
+      DEEZER_API: JSON.stringify('https://api.deezer.com/user/'),
       DEEZER_PROFIL: JSON.stringify('https://api.deezer.com/user/me'),
       DEEZER_PROFIL_PLAYLISTS: JSON.stringify('https://api.deezer.com/user/me/playlists'),
       DEEZER_APP_ID: JSON.stringify('400104'),
       REDIRECT_URI_DEEZER: JSON.stringify('http://localhost:8080/userDeezer'),
       SECRET_KEY_DEEZER: JSON.stringify('f7a954b05703f19c7b96ff5f8bd5695b'),
+      // Cors
+      CORS_ANYWHERE: JSON.stringify('https://cors-anywhere.herokuapp.com/'),
     }),
   ],
   resolve: {
