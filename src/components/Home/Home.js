@@ -25,9 +25,9 @@ const Home = () => {
             </h2>
           </Grid>
           <Grid container className="home__button-container" alignItems="center" justify="center">
-            <Button className="home__button-container__button">
-              <Link to="/switch-music">Jump In !</Link>
-            </Button>
+            <Link to="/switch-music">
+              <Button className="home__button-container__button">Jump In !</Button>
+            </Link>
           </Grid>
         </Grid>
       </div>

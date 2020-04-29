@@ -27,7 +27,9 @@ const Profile = ({ spotifyProfilData }) => {
             </div>
             <div className="user-spotify__profile-container__infos__to-spotify">
               <span>Lien vers profil Spotify :</span>{' '}
-              <a href={external_urls.spotify}>{external_urls.spotify}</a>
+              <a href={external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                {external_urls.spotify}
+              </a>
             </div>
           </div>
         </div>
@@ -41,11 +43,13 @@ Profile.propTypes = {
     country: PropTypes.string,
     display_name: PropTypes.string,
     external_urls: PropTypes.shape({
-      spotify: PropTypes.string.isRequired
+      spotify: PropTypes.string.isRequired,
     }),
-    images: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired,
-    }))
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      }),
+    ),
   }).isRequired,
 };
 

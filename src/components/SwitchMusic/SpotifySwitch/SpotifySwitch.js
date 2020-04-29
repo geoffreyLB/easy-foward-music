@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 
 const SPOTIFY_ACCOUNT_AUTHORIZE = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${encodeURIComponent(
-  REDIRECT_URI,
+  REDIRECT_URI_SPOTIFY,
 )}&scope=${encodeURIComponent(SPOTIFY_SCOPES.join(' '))}&response_type=token`;
 
 const SpotifySwitch = () => {

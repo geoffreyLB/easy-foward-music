@@ -10,7 +10,7 @@ const Playlists = ({ spotifyPlaylistData }) => {
 
   return (
     <div className="user-spotify__playlists-container">
-      {Object.keys(spotifyPlaylistData).length > 0 && (
+      {Object.keys(spotifyPlaylistData).length > 0 ? (
         <div className="user-spotify__playlists-container__playlists">
           {items.map(item => (
             <Link
@@ -24,6 +24,8 @@ const Playlists = ({ spotifyPlaylistData }) => {
             </Link>
           ))}
         </div>
+      ) : (
+        <div>Aucune playlists disponible</div>
       )}
     </div>
   );
