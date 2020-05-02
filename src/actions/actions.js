@@ -1,0 +1,6 @@
+// Spofity
+export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
+export const SET_TOKEN_TYPE = 'SET_TOKEN_TYPE';
+export const SET_EXPIRESIN = 'SET_EXPIRESIN';
+export const FETCH_PROFIL_DATA = 'FETCH_PROFIL_DATA';
+export const FETCH_PLAYLIST_DATA = 'FETCH_PLAYLIST_DATA';
