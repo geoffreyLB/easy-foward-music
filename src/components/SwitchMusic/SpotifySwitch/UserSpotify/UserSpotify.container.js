@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import axios from 'axios';
+import {
+  setAccessTokenSpotify,
+  setTokenTypeSpotify,
+  setExpiresInSpotify,
+  fetchProfilDataSpotify,
+  fetchPlaylistDataSpotify,
+  fetchSpotifyProfilApi,
+  fetchSpotifyPlaylistApi,
+} from '@actions/actionCreators';
 
 const UserSpotifyContainer = WrappedComponent => ({ location }) => {
-  // Token values
-  const [accessToken, setAccessToken] = useState('');
-  const [tokenType, setTokenType] = useState('');
-  const [expiresIn, setExpiresIn] = useState('');
-  const [spotifyProfilData, setSpotifyProfilData] = useState({});
-  const [spotifyPlaylistData, setSpotifyPlaylistData] = useState({});
+  const dispatch = useDispatch();
+  const spotifyProfilData = useSelector(state => state.spotify.profil);
+  const spotifyPlaylistData = useSelector(state => state.spotify.playlist);
 
   // Hash Token
   const { hash } = location;
@@ -22,48 +28,22 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
   };
 
   useEffect(() => {
-    setAccessToken(access_token);
-    setTokenType(token_type);
-    setExpiresIn(expires_in);
+    dispatch(setAccessTokenSpotify(access_token));
+    dispatch(setTokenTypeSpotify(token_type));
+    dispatch(setExpiresInSpotify(expires_in));
   }, [access_token, token_type, expires_in]);
 
   useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      if (accessToken) {
-        try {
-          const result = await axios.get(SPOTIFY_PROFIL, configHeaders);
-          if (mounted) {
-            setSpotifyProfilData(result.data);
-          }
-        } catch (err) {
-          console.error('Error to fetch Spotify profile data');
-        }
-      }
+    if (access_token) {
+      fetchSpotifyProfilApi(configHeaders, dispatch);
     }
-
-    fetchData();
-    return () => (mounted = false);
-  }, [accessToken, SPOTIFY_PROFIL]);
+  }, [access_token, SPOTIFY_PROFIL]);
 
   useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      if (accessToken) {
-        try {
-          const result = await axios.get(SPOTIFY_PROFIL_PLAYLISTS, configHeaders);
-          if (mounted) {
-            setSpotifyPlaylistData(result.data);
-          }
-        } catch (err) {
-          console.error('Error to fetch Spotify playlist data');
-        }
-      }
+    if (access_token) {
+      fetchSpotifyPlaylistApi(configHeaders, dispatch);
     }
-
-    fetchData();
-    return () => (mounted = false);
-  }, [accessToken, SPOTIFY_PROFIL_PLAYLISTS]);
+  }, [access_token, SPOTIFY_PROFIL_PLAYLISTS]);
 
   return (
     <div>

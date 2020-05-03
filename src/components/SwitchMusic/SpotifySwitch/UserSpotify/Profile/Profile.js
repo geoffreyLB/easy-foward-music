@@ -1,38 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import axios from 'axios';
-import UserSpotifyContainer from '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.container/';
 
 const Profile = ({ spotifyProfilData }) => {
-  const { country, display_name, external_urls, images } = spotifyProfilData;
-
   return (
     <div className="user-spotify__profile-container">
-      {Object.keys(spotifyProfilData).length > 0 && (
+      {Object.keys(spotifyProfilData).length > 0 ? (
         <div className="user-spotify__profile-container__infos">
-          {images.map(image => (
+          {spotifyProfilData.images.map(image => (
             <img
               className="user-spotify__profile-container__infos__picture"
               key={image}
               src={image.url}
-              alt={display_name}
+              alt={spotifyProfilData.display_name}
             />
           ))}
           <div>
             <div>
               <span className="user-spotify__profile-container__infos__name">
-                {display_name} ({country})
+                {spotifyProfilData.display_name} ({spotifyProfilData.country})
               </span>
             </div>
             <div className="user-spotify__profile-container__infos__to-spotify">
               <span>Lien vers profil Spotify :</span>{' '}
-              <a href={external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                {external_urls.spotify}
+              <a
+                href={spotifyProfilData.external_urls.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {spotifyProfilData.external_urls.spotify}
               </a>
             </div>
           </div>
         </div>
+      ) : (
+        <div>Playlist en cours de chargement</div>
       )}
     </div>
   );
@@ -53,4 +55,4 @@ Profile.propTypes = {
   }).isRequired,
 };
 
-export default UserSpotifyContainer(Profile);
+export default Profile;

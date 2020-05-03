@@ -1,15 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import UserDeezerContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container/';
 
 const Playlists = ({ deezerPlaylistData }) => {
-  const { data } = deezerPlaylistData;
-
   return (
     <div className="user-deezer__playlists-container">
       {Object.keys(deezerPlaylistData).length > 0 ? (
         <div className="user-deezer__playlists-container__playlists">
-          {data.map(item => (
+          {deezerPlaylistData.data.map(item => (
             <Link
               className="user-deezer__playlists-container__playlists__one-playlist"
               key={item.title}
@@ -28,4 +26,15 @@ const Playlists = ({ deezerPlaylistData }) => {
   );
 };
 
-export default UserDeezerContainer(Playlists);
+Playlists.propTypes = {
+  deezerPlaylistData: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
+};
+
+export default Playlists;

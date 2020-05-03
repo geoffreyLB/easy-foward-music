@@ -4,19 +4,21 @@ import PropTypes from 'prop-types';
 import Header from '@components/Header/Header';
 import Profile from '@components/SwitchMusic/SpotifySwitch/UserSpotify/Profile/Profile';
 import Playlists from '@components/SwitchMusic/SpotifySwitch/UserSpotify/Playlists/Playlists';
+import UserSpotifyContainer from '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.container/';
 
-const UserSpotify = ({ location }) => {
+const UserSpotify = ({ spotifyProfilData, spotifyPlaylistData }) => {
   return (
     <div className="user-spotify">
       <Header />
-      <Profile location={location} />
-      <Playlists location={location} />
+      <Profile spotifyProfilData={spotifyProfilData} />
+      <Playlists spotifyPlaylistData={spotifyPlaylistData} />
     </div>
   );
 };
 
 UserSpotify.propTypes = {
-  location: PropTypes.shape({}).isRequired,
+  spotifyProfilData: PropTypes.shape({}).isRequired,
+  spotifyPlaylistData: PropTypes.shape({}).isRequired,
 };
 
-export default UserSpotify;
+export default UserSpotifyContainer(UserSpotify);
