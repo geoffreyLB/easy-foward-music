@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
-import axios from 'axios';
-import UserSpotifyContainer from '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.container/';
 
 const Playlists = ({ spotifyPlaylistData }) => {
-
   return (
     <div className="user-spotify__playlists-container">
       {Object.keys(spotifyPlaylistData).length > 0 ? (
@@ -30,15 +27,15 @@ const Playlists = ({ spotifyPlaylistData }) => {
   );
 };
 
-// Playlists.propTypes = {
-//   spotifyPlaylistData: PropTypes.shape({
-//     items: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         id: PropTypes.string.isRequired,
-//         name: PropTypes.string.isRequired,
-//       }),
-//     ),
-//   }).isRequired,
-// };
+Playlists.propTypes = {
+  spotifyPlaylistData: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
+};
 
 export default Playlists;

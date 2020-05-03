@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import axios from 'axios';
-import UserSpotifyContainer from '@components/SwitchMusic/SpotifySwitch/UserSpotify/UserSpotify.container/';
 
 const Profile = ({ spotifyProfilData }) => {
   return (

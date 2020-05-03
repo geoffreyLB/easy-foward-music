@@ -4,19 +4,21 @@ import PropTypes from 'prop-types';
 import Header from '@components/Header/Header';
 import Profile from '@components/SwitchMusic/DeezerSwitch/UserDeezer/Profile/Profile';
 import Playlists from '@components/SwitchMusic/DeezerSwitch/UserDeezer/Playlists/Playlists';
+import UserDeezerContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container/';
 
-const UserDeezer = ({ location }) => {
+const UserDeezer = ({ deezerProfilData, deezerPlaylistData }) => {
   return (
     <div className="user-deezer">
       <Header />
-      <Profile location={location} />
-      <Playlists location={location} />
+      <Profile deezerProfilData={deezerProfilData} />
+      <Playlists deezerPlaylistData={deezerPlaylistData} />
     </div>
   );
 };
 
 UserDeezer.propTypes = {
-  location: PropTypes.shape({}).isRequired,
-}
+  deezerProfilData: PropTypes.shape({}).isRequired,
+  deezerPlaylistData: PropTypes.shape({}).isRequired,
+};
 
-export default UserDeezer;
+export default UserDeezerContainer(UserDeezer);

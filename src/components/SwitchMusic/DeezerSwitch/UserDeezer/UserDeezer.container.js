@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import axios from 'axios';
+import {
+  setAccessTokenDeezer,
+  setExpiresInDeezer,
+  fetchProfilDataDeezer,
+  fetchPlaylistDataDeezer,
+  fetchDeezerProfilApi,
+  fetchDeezerPlaylistApi,
+} from '@actions/actionCreators';
 
 const UserDeezerContainer = WrappedComponent => ({ location }) => {
-  // Token values
-  const [accessToken, setAccessToken] = useState('');
-  const [expiresIn, setExpiresIn] = useState('');
-  const [deezerProfilData, setDeezerProfilData] = useState({});
-  const [deezerPlaylistData, setDeezerPlaylistData] = useState({});
+  const dispatch = useDispatch();
+  const deezerProfilData = useSelector(state => state.deezer.profil);
+  const deezerPlaylistData = useSelector(state => state.deezer.playlist);
 
   // Hash Token
   const { hash } = location;
   const hashValues = queryString.parse(hash);
-  const { access_token, expires_in } = hashValues;
+  const { access_token, expires } = hashValues;
 
   // Token headers for the get request
   const configHeaders = {
@@ -24,55 +30,21 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
   };
 
   useEffect(() => {
-    setAccessToken(access_token);
-    setExpiresIn(expires_in);
-  }, [access_token, expires_in]);
+    dispatch(setAccessTokenDeezer(access_token));
+    dispatch(setExpiresInDeezer(expires));
+  }, [access_token, expires]);
 
-  // Get Profil data Deezer
   useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      if (accessToken) {
-        try {
-          const result = await axios.get(
-            `${CORS_ANYWHERE}${DEEZER_PROFIL}?access_token=${access_token}`,
-            configHeaders,
-          );
-          if (mounted) {
-            setDeezerProfilData(result.data);
-          }
-        } catch (err) {
-          console.error('Error to fetch Deezer profile data');
-        }
-      }
+    if (access_token) {
+      fetchDeezerProfilApi(configHeaders, access_token, dispatch);
     }
+  }, [access_token, DEEZER_PROFIL]);
 
-    fetchData();
-    return () => (mounted = false);
-  }, [accessToken, DEEZER_PROFIL]);
-
-  // Get Playlist data Deezer
   useEffect(() => {
-    let mounted = true;
-    async function fetchData() {
-      if (Object.keys(deezerProfilData).length > 0) {
-        try {
-          const resultPlaylist = await axios.get(
-            `${CORS_ANYWHERE}${DEEZER_API}${deezerProfilData.id}/playlists`,
-            configHeaders,
-          );
-          if (mounted) {
-            setDeezerPlaylistData(resultPlaylist.data);
-          }
-        } catch (err) {
-          console.error('Error to fetch Deezer playlist data');
-        }
-      }
+    if (Object.keys(deezerProfilData).length > 0) {
+      fetchDeezerPlaylistApi(configHeaders, deezerProfilData, dispatch);
     }
-
-    fetchData();
-    return () => (mounted = false);
-  }, [deezerProfilData, DEEZER_PROFIL_PLAYLISTS]);
+  }, [deezerProfilData, access_token, DEEZER_PROFIL_PLAYLISTS]);
 
   return (
     <div>

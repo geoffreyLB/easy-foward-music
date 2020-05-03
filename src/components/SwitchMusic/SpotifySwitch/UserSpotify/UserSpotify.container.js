@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import {
-  setAccessToken,
-  setTokenType,
-  setExpiresIn,
-  fetchProfilData,
-  fetchSpotifyProfilData,
-  fetchPlaylistData,
-  fetchSpotifyPlaylistData,
+  setAccessTokenSpotify,
+  setTokenTypeSpotify,
+  setExpiresInSpotify,
+  fetchProfilDataSpotify,
+  fetchPlaylistDataSpotify,
+  fetchSpotifyProfilApi,
+  fetchSpotifyPlaylistApi,
 } from '@actions/actionCreators';
 
 const UserSpotifyContainer = WrappedComponent => ({ location }) => {
@@ -28,20 +28,20 @@ const UserSpotifyContainer = WrappedComponent => ({ location }) => {
   };
 
   useEffect(() => {
-    dispatch(setAccessToken(access_token));
-    dispatch(setTokenType(token_type));
-    dispatch(setExpiresIn(expires_in));
+    dispatch(setAccessTokenSpotify(access_token));
+    dispatch(setTokenTypeSpotify(token_type));
+    dispatch(setExpiresInSpotify(expires_in));
   }, [access_token, token_type, expires_in]);
 
   useEffect(() => {
     if (access_token) {
-      fetchSpotifyProfilData(configHeaders, dispatch);
+      fetchSpotifyProfilApi(configHeaders, dispatch);
     }
   }, [access_token, SPOTIFY_PROFIL]);
 
   useEffect(() => {
     if (access_token) {
-      fetchSpotifyPlaylistData(configHeaders, dispatch);
+      fetchSpotifyPlaylistApi(configHeaders, dispatch);
     }
   }, [access_token, SPOTIFY_PROFIL_PLAYLISTS]);
 

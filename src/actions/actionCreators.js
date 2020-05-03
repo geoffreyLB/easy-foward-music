@@ -1,61 +1,116 @@
 import {
-  SET_ACCESS_TOKEN,
-  SET_TOKEN_TYPE,
-  SET_EXPIRESIN,
-  FETCH_PROFIL_DATA,
-  FETCH_PLAYLIST_DATA,
+  SPOTIFY_SET_ACCESS_TOKEN,
+  SPOTIFY_SET_TOKEN_TYPE,
+  SPOTIFY_SET_EXPIRESIN,
+  SPOTIFY_FETCH_PROFIL_DATA,
+  SPOTIFY_FETCH_PLAYLIST_DATA,
+  DEEZER_SET_ACCESS_TOKEN,
+  DEEZER_SET_TOKEN_TYPE,
+  DEEZER_SET_EXPIRESIN,
+  DEEZER_FETCH_PROFIL_DATA,
+  DEEZER_FETCH_PLAYLIST_DATA,
 } from '@actions/actions';
 import axios from 'axios';
 
-export const setAccessToken = accessToken => {
+// Spotify
+export const setAccessTokenSpotify = accessToken => {
   return {
-    type: SET_ACCESS_TOKEN,
+    type: SPOTIFY_SET_ACCESS_TOKEN,
     payload: accessToken,
   };
 };
 
-export const setTokenType = tokenType => {
+export const setTokenTypeSpotify = tokenType => {
   return {
-    type: SET_TOKEN_TYPE,
+    type: SPOTIFY_SET_TOKEN_TYPE,
     payload: tokenType,
   };
 };
 
-export const setExpiresIn = expiresIn => {
+export const setExpiresInSpotify = expiresIn => {
   return {
-    type: SET_EXPIRESIN,
+    type: SPOTIFY_SET_EXPIRESIN,
     payload: expiresIn,
   };
 };
 
-export const fetchProfilData = profilData => {
+export const fetchProfilDataSpotify = profilData => {
   return {
-    type: FETCH_PROFIL_DATA,
+    type: SPOTIFY_FETCH_PROFIL_DATA,
     payload: profilData,
   };
 };
 
-export const fetchPlaylistData = playlistData => {
+export const fetchPlaylistDataSpotify = playlistData => {
   return {
-    type: FETCH_PLAYLIST_DATA,
+    type: SPOTIFY_FETCH_PLAYLIST_DATA,
     payload: playlistData,
   };
 };
 
-export const fetchSpotifyProfilData = async (configHeaders, dispatch) => {
+export const fetchSpotifyProfilApi = async (configHeaders, dispatch) => {
   try {
     const result = await axios.get(SPOTIFY_PROFIL, configHeaders);
-    dispatch(fetchProfilData(result.data));
+    dispatch(fetchProfilDataSpotify(result.data));
   } catch (err) {
     console.error('Error to fetch Spotify profile data');
   }
 };
 
-export const fetchSpotifyPlaylistData = async (configHeaders, dispatch) => {
+export const fetchSpotifyPlaylistApi = async (configHeaders, dispatch) => {
   try {
     const result = await axios.get(SPOTIFY_PROFIL_PLAYLISTS, configHeaders);
-    dispatch(fetchPlaylistData(result.data));
+    dispatch(fetchPlaylistDataSpotify(result.data));
   } catch (err) {
     console.error('Error to fetch Spotify playlist data');
+  }
+};
+
+// Deezer
+export const setAccessTokenDeezer = accessToken => {
+  return {
+    type: DEEZER_SET_ACCESS_TOKEN,
+    payload: accessToken,
+  };
+};
+
+export const setExpiresInDeezer = expiresIn => {
+  return {
+    type: DEEZER_SET_EXPIRESIN,
+    payload: expiresIn,
+  };
+};
+
+export const fetchProfilDataDeezer = profilData => {
+  return {
+    type: DEEZER_FETCH_PROFIL_DATA,
+    payload: profilData,
+  };
+};
+
+export const fetchPlaylistDataDeezer = playlistData => {
+  return {
+    type: DEEZER_FETCH_PLAYLIST_DATA,
+    payload: playlistData,
+  };
+};
+
+export const fetchDeezerProfilApi = async (configHeaders, access_token, dispatch) => {
+  try {
+    const result = await axios.get(`${CORS_ANYWHERE}${DEEZER_PROFIL}?access_token=${access_token}`,
+    configHeaders);
+    dispatch(fetchProfilDataDeezer(result.data));
+  } catch (err) {
+    console.error('Error to fetch Deezer profile data');
+  }
+};
+
+export const fetchDeezerPlaylistApi = async (configHeaders, deezerProfilData, dispatch) => {
+  try {
+    const result = await axios.get(`${CORS_ANYWHERE}${DEEZER_API}${deezerProfilData.id}/playlists`,
+    configHeaders);
+    dispatch(fetchPlaylistDataDeezer(result.data));
+  } catch (err) {
+    console.error('Error to fetch Deezer playlist data');
   }
 };

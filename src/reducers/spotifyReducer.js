@@ -1,9 +1,9 @@
 import {
-  SET_ACCESS_TOKEN,
-  SET_TOKEN_TYPE,
-  SET_EXPIRESIN,
-  FETCH_PROFIL_DATA,
-  FETCH_PLAYLIST_DATA,
+  SPOTIFY_SET_ACCESS_TOKEN,
+  SPOTIFY_SET_TOKEN_TYPE,
+  SPOTIFY_SET_EXPIRESIN,
+  SPOTIFY_FETCH_PROFIL_DATA,
+  SPOTIFY_FETCH_PLAYLIST_DATA,
 } from '@actions/actions';
 
 const initialState = {
@@ -16,27 +16,27 @@ const initialState = {
 
 const spotifyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ACCESS_TOKEN:
+    case SPOTIFY_SET_ACCESS_TOKEN:
       return {
         ...state,
         accessToken: action.payload,
       };
-    case SET_TOKEN_TYPE:
+    case SPOTIFY_SET_TOKEN_TYPE:
       return {
         ...state,
         tokenType: action.payload,
       };
-    case SET_EXPIRESIN:
+    case SPOTIFY_SET_EXPIRESIN:
       return {
         ...state,
         expiresIn: action.payload,
       };
-    case FETCH_PROFIL_DATA:
+    case SPOTIFY_FETCH_PROFIL_DATA:
       return {
         ...state,
         profil: action.payload,
       };
-    case FETCH_PLAYLIST_DATA:
+    case SPOTIFY_FETCH_PLAYLIST_DATA:
       return {
         ...state,
         playlist: action.payload,
