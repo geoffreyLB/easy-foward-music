@@ -54,6 +54,7 @@ export const fetchSpotifyProfilApi = async (configHeaders, dispatch) => {
     dispatch(fetchProfilDataSpotify(result.data));
   } catch (err) {
     console.error('Error to fetch Spotify profile data');
+    window.location.assign(SWITCH_MUSIC_URL);
   }
 };
 
@@ -102,6 +103,7 @@ export const fetchDeezerProfilApi = async (configHeaders, access_token, dispatch
     dispatch(fetchProfilDataDeezer(result.data));
   } catch (err) {
     console.error('Error to fetch Deezer profile data');
+    window.location.assign(SWITCH_MUSIC_URL);
   }
 };
 
@@ -114,3 +116,7 @@ export const fetchDeezerPlaylistApi = async (configHeaders, deezerProfilData, di
     console.error('Error to fetch Deezer playlist data');
   }
 };
+
+export const fetchSpotifySetup = async () => {
+  // https://accounts.spotify.com/api/token
+}
