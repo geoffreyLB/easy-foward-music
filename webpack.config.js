@@ -55,6 +55,7 @@ module.exports = {
       filename: './index.html',
     }),
     new webpack.DefinePlugin({
+      SWITCH_MUSIC_URL: JSON.stringify('http://localhost:8080/switch-music'),
       // Spotify
       SPOTIFY_PROFIL: JSON.stringify('https://api.spotify.com/v1/me'),
       SPOTIFY_PROFIL_PLAYLISTS: JSON.stringify('https://api.spotify.com/v1/me/playlists'),
