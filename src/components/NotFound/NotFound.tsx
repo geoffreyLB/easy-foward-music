@@ -4,7 +4,7 @@ import Header from '@components/Header/Header';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-const Notfound = () => {
+const Notfound: React.FC = () => {
   return (
     <div className="notfound">
       <Header />

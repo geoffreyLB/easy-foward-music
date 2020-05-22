@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Loading = () => {
-  const [animation, setAnimation] = useState(false);
+const Loading: React.FC = () => {
+  const [animation, setAnimation] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => {

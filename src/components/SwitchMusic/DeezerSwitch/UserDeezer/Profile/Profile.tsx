@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Profile = ({ deezerProfilData }) => {
+interface Props {
+  deezerProfilData: PropTypes.InferProps<{ picture_big: string; name: string; link: string }>;
+}
+
+const Profile: React.FC<Props> = ({ deezerProfilData }) => {
   return (
     <div className="user-deezer__profile-container">
       {Object.keys(deezerProfilData).length > 0 && (

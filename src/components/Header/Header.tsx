@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import MenuHeader from '@components/Header/MenuHeader/MenuHeader';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <Grid className="header" container justify="space-between" spacing={0}>
       <Grid item>

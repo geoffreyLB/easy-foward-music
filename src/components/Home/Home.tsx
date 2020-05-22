@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import MenuHeader from '@components/Header/MenuHeader/MenuHeader';
 import Header from '@components/Header/Header';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="home">
       <Header />

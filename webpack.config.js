@@ -7,7 +7,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -81,6 +81,7 @@ module.exports = {
       '@reducers': path.resolve(__dirname, 'src/reducers/'),
       '@actions': path.resolve(__dirname, 'src/actions/'),
     },
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   devServer: {
     historyApiFallback: true,

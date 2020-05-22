@@ -1,25 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
+import queryString, { ParsedQuery } from 'query-string';
 import {
   setAccessTokenDeezer,
   setExpiresInDeezer,
-  fetchProfilDataDeezer,
-  fetchPlaylistDataDeezer,
   fetchDeezerProfilApi,
   fetchDeezerPlaylistApi,
 } from '@actions/actionCreators';
 
-const UserDeezerContainer = WrappedComponent => ({ location }) => {
+interface ILocation {
+  location: {
+    hash: string;
+  };
+}
+
+interface IState {
+  deezer: {
+    profil: object;
+    playlist: object;
+  };
+}
+
+const UserDeezerContainer = WrappedComponent => ({ location }: ILocation) => {
   const dispatch = useDispatch();
-  const deezerProfilData = useSelector(state => state.deezer.profil);
-  const deezerPlaylistData = useSelector(state => state.deezer.playlist);
+  const deezerProfilData = useSelector((state: IState) => state.deezer.profil);
+  const deezerPlaylistData = useSelector((state: IState) => state.deezer.playlist);
 
   // Hash Token
   const { hash } = location;
   const hashValues = queryString.parse(hash);
-  const { access_token, expires } = hashValues;
+  const { access_token, expires }: ParsedQuery<string> = hashValues;
 
   // Token headers for the get request
   const configHeaders = {
@@ -42,7 +53,7 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
 
   useEffect(() => {
     if (Object.keys(deezerProfilData).length > 0) {
-      fetchDeezerPlaylistApi(configHeaders, deezerProfilData, dispatch);
+      fetchDeezerPlaylistApi(configHeaders, deezerProfilData.id, dispatch);
     }
   }, [deezerProfilData, access_token, DEEZER_PROFIL_PLAYLISTS]);
 
@@ -54,6 +65,10 @@ const UserDeezerContainer = WrappedComponent => ({ location }) => {
       />
     </div>
   );
+};
+
+UserDeezerContainer.propTypes = {
+  location: PropTypes.shape({}).isRequired,
 };
 
 export default UserDeezerContainer;

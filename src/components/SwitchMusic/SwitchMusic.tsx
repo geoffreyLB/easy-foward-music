@@ -3,9 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import SpotifySwitch from '@components/SwitchMusic/SpotifySwitch/SpotifySwitch';
 import DeezerSwitch from '@components/SwitchMusic/DeezerSwitch/DeezerSwitch';
 import Header from '@components/Header/Header';
-import Button from '@material-ui/core/Button';
 
-const SwitchMusic = () => {
+const SwitchMusic: React.FC = () => {
   return (
     <div className="switch-music">
       <Header />

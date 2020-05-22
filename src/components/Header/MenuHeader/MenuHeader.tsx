@@ -4,14 +4,14 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const MenuHeader = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+const MenuHeader: React.FC = () => {
+  const [anchorEl, setAnchorEl] = useState<null>(null);
 
-  const handleClick = event => {
+  const handleClick = (event: any): any => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setAnchorEl(null);
   };
 
@@ -27,7 +27,9 @@ const MenuHeader = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}><Link to="/switch-music">My Switch</Link></MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link to="/switch-music">My Switch</Link>
+        </MenuItem>
         <MenuItem onClick={handleClose}>My Spotify</MenuItem>
         <MenuItem onClick={handleClose}>My Deezer</MenuItem>
       </Menu>

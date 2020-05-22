@@ -2,12 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Playlists = ({ deezerPlaylistData }) => {
+interface Props {
+  deezerPlaylistData: PropTypes.InferProps<{ data: object; item: any; link: string }>;
+}
+
+interface IItem {
+  item: object;
+  title: string;
+  id: number
+}
+
+const Playlists: React.FC<Props> = ({ deezerPlaylistData }) => {
   return (
     <div className="user-deezer__playlists-container">
       {Object.keys(deezerPlaylistData).length > 0 ? (
         <div className="user-deezer__playlists-container__playlists">
-          {deezerPlaylistData.data.map(item => (
+          {deezerPlaylistData.data.map((item: IItem) => (
             <Link
               className="user-deezer__playlists-container__playlists__one-playlist"
               key={item.title}
