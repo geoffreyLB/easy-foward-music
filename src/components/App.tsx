@@ -8,7 +8,7 @@ import SpotifyPlaylist from '@components/SwitchMusic/SpotifySwitch/SpotifyPlayli
 import UserDeezer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer';
 import NotFound from '@components/NotFound/NotFound';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="app">
       <Switch>

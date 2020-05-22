@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '@components/Header/Header';
 import Profile from '@components/SwitchMusic/DeezerSwitch/UserDeezer/Profile/Profile';
 import Playlists from '@components/SwitchMusic/DeezerSwitch/UserDeezer/Playlists/Playlists';
-import UserDeezerContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container/';
+import UserDeezerContainer from '@components/SwitchMusic/DeezerSwitch/UserDeezer/UserDeezer.container';
 
-const UserDeezer = ({ deezerProfilData, deezerPlaylistData }) => {
+interface Props {
+  deezerProfilData: object;
+  deezerPlaylistData: object;
+}
+
+const UserDeezer: React.FC<Props> = ({ deezerProfilData, deezerPlaylistData }) => {
   return (
     <div className="user-deezer">
       <Header />

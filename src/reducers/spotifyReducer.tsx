@@ -6,15 +6,28 @@ import {
   SPOTIFY_FETCH_PLAYLIST_DATA,
 } from '@actions/actions';
 
-const initialState = {
+type SpotifyState = {
+  accessToken: string;
+  tokenType: string;
+  expiresIn: string;
+  profil: object;
+  playlist: object;
+};
+
+interface Action {
+  type: string;
+  payload: string | object;
+}
+
+const initialState: SpotifyState = {
   accessToken: '',
   tokenType: '',
   expiresIn: '',
   profil: {},
   playlist: {},
-}
+};
 
-const spotifyReducer = (state = initialState, action) => {
+const spotifyReducer = (state = initialState, action: Action): object => {
   switch (action.type) {
     case SPOTIFY_SET_ACCESS_TOKEN:
       return {
